@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do-List</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="box1">
+            <h1>TO DO LIST</h1>
+        </div>
+        <div class="box2">
+        <form action="/add" method="post">
+           <div id="inp"><input type="text" placeholder="Add New Item..." name="name" required></div>
+           <div id="plus">
+                <button><img src="add.png" alt=""></button>
+            </div>
+        </form>
+        </div>
+        <div class="box3">
+            <%if(locals.arr){
+                for(let i=0;i<arr.length;i++){%>
+                    <li id="req">
+                    <div class="b1">
+                        <p><%= arr[i].val%></p>
+                    </div>
+                    <div class="b2">
+                       <form action="/del" method="post">
+                        <button name="name" value = <%= i+1%>
+                        ><img src="delete.png" alt=""></button> 
+                       </form>
+                    </div>
+                    </li>
+                <%}
+            }%>       
+        </div>
+            <form action="/logout" method="post" class="btn">
+                <button id="logout">Logout</button>
+            </form>
+    </div> 
+</body>
+</html>
